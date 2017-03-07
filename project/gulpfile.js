@@ -51,7 +51,7 @@ gulp.task('compile-jade', function() {
 });
 
 gulp.task('watch',['browser-sync','minify-css','scss-compile','gulp-concat','minify-js'],function(){
-  gulp.watch('app/scss/**/*.scss',['scss-compile','minify-css',browserSync.reload]);
+  gulp.watch('app/scss/**/*.scss',['scss-compile','minify-css'],browserSync.reload);
   gulp.watch('app/js/**/*.js',['gulp-concat','minify-js']);
   gulp.watch('app/**/*.html',browserSync.reload);
 })
