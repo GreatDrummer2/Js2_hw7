@@ -69,7 +69,7 @@ gulp.task('serve', ['js-compile','scss-compile','compile-jade'], function () {
         }
     });
 
-    gulp.watch('app/js/**/*.js', ['js-watch']);
-    gulp.watch('app/scss/**/*.scss', ['css-watch']);
+    gulp.watch('app/js/**/*.js', ['js-watch','jade-watch']);
+    gulp.watch('app/scss/**/*.scss', ['css-watch','jade-watch']);
     gulp.watch('app/jade/**/*.jade', ['jade-watch']);
 });
