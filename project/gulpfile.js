@@ -4,17 +4,13 @@ var browserSync = require('browser-sync');
 var gulpConcat = require('gulp-concat'); 
 var jsmin = require('gulp-jsmin');
 var rename = require('gulp-rename');
-//var minify = require('gulp-minify');
 var cleanCSS = require('gulp-clean-css');
 var jade = require('gulp-jade');
 
 gulp.task('scss-compile',function(){
   return gulp.src('app/scss/**/*.scss')
   .pipe(sass())
-  .pipe(gulp.dest('app/css'))
-  .pipe(browserSync.reload({
-    stream:true
-  }));
+  .pipe(gulp.dest('app/css'));
 });
 
 gulp.task('browser-sync',function(){
@@ -30,19 +26,6 @@ gulp.task('gulp-concat',function(){
         .pipe(gulpConcat('all.js'))
         .pipe(gulp.dest('./app/js/'));
 });
-
-/*gulp.task('minifyjs', function() {
-  gulp.src('app/*.js')
-    .pipe(minify({
-        ext:{
-            src:'source.js',
-            min:'min.js'//[/\.(.*)-source\.js$/, '$1.js'] ???????
-        },
-        exclude: ['tasks'],
-        ignoreFiles: ['combo.js', '-min.js']
-    }))
-    .pipe(gulp.dest('app/'))
-});*/
  
 gulp.task('minify-js', function () {
     gulp.src('app/js/all.js')
@@ -68,7 +51,7 @@ gulp.task('compile-jade', function() {
 });
 
 gulp.task('watch',['browser-sync','minify-css','scss-compile','gulp-concat','minify-js'],function(){
-  gulp.watch('app/scss/**/*.scss',['scss-compile','minify-css']);
+  gulp.watch('app/scss/**/*.scss',['scss-compile','minify-css','browser-sync']);
   gulp.watch('app/js/**/*.js',['gulp-concat','minify-js']);
   gulp.watch('app/**/*.html',browserSync.reload);
 })
