@@ -7,14 +7,8 @@ var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 var jade = require('gulp-jade');
 
-gulp.task('gulp-concat',function(){
-  return gulp.src(['./app/js/2.js'])
-        .pipe(gulpConcat('all.js'))
-        .pipe(gulp.dest('./app/js/'));
-});
-
 gulp.task('js-compile',function(){
-  return gulp.src(['./app/js/1.js','./app/js/2.js'])
+  return gulp.src(['./app/js/*.js'])
         .pipe(gulpConcat('all.js'))
         .pipe(jsmin())
         .pipe(rename({suffix: '.min'}))

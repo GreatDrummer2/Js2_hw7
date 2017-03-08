@@ -1,44 +1,17 @@
-//
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="2.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="2.js"></script>
-  </head>
-  <body>
-  <div class="wrapper">
-    <input type="text" class="Username" required placeholder="Username">
-    <div class="error Username"></div>
-    <input type="text" class="Password" required placeholder="Password">
-    <div class="error Password"></div>
-    <input type="text" class="Email" required placeholder="E-mail in the format youremail@gmail.com">
-    <div class="error Email"></div>
-    <input type="text" class="Gender" required placeholder="Gender">
-    <div class="error Gender"></div>
-    <input type="text" class="CreditCard" required placeholder="Credit card">
-    <div class="error CreditCard"></div>
-    <input type="text" class="Bio" required placeholder="Bio">
-    <div class="error Bio"></div>
-    <input type="text" class="Birth" required placeholder="Birth 1900-12-27">
-    <div class="error Birth"></div>
-    <input type="submit" value="Submit">
-  </div>
-  </body>
-  </html>
-//
-
-- var classes = ["Username","Password","Email","Gender","CreditCard","Bio","Birth"];
-- var inFormat = ["",""," in the format youremail@gmail.com","","",""," 1900-12-27"]
 html
   head
-    title My first site made in JADE
+    title Mine first site made in Jade
     link( rel='stylesheet' href='../style.css')
-    script(type="text/javascript" src="all.min.js")
+    script(type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
   body
+    - var classes = ["Username","Password","Email","Gender","CreditCard","Bio","Birth"];
+    - var inFormat = ["",""," in the format youremail@gmail.com","","",""," 1900-12-27"]
     div.wrapper
       - for(var i = 0; i < classes.length;i++){
             input(type = "text" class = classes[i] placeholder = classes[i] + inFormat[i])
-            div.error
+            div(class="error " + classes[i])
       - } 
+
+      input(type="submit" value="Submit")
+
+    script(type="text/javascript" src="all.min.js")
