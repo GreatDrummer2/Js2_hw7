@@ -8,7 +8,7 @@ var cleanCSS = require('gulp-clean-css');
 var jade = require('gulp-jade');
 
 gulp.task('gulp-concat',function(){
-  return gulp.src(['./app/js/1.js','./app/js/2.js'])
+  return gulp.src(['./app/js/2.js'])
         .pipe(gulpConcat('all.js'))
         .pipe(gulp.dest('./app/js/'));
 });
@@ -63,5 +63,5 @@ gulp.task('serve', ['js-compile','scss-compile','compile-jade'], function () {
 
     gulp.watch('app/js/**/*.js', ['js-watch'],browserSync.reload());
     gulp.watch('app/scss/**/*.scss', ['css-watch'], browserSync.reload());
-    gulp.watch('app/jade/**/*.jade', ['jade-watch'],browserSync.reload());
+    gulp.watch('app/jade/**/*.jade', ['jade-watch']);
 });
