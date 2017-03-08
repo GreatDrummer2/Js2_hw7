@@ -31,7 +31,7 @@ gulp.task('scss-compile',function(){
 gulp.task('compile-jade', function() {
   var YOUR_LOCALS = {};
  
-  gulp.src('./app/jade/*.jade')
+  return gulp.src('./app/jade/*.jade')
     .pipe(jade({
       locals: YOUR_LOCALS
     }))
@@ -57,6 +57,7 @@ gulp.task('serve', ['js-compile','scss-compile','compile-jade'], function () {
     browserSync.init({
         server: {
             baseDir: "app",
+            index:"index.html"
         }
     });
 
